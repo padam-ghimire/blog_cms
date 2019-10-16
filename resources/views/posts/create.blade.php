@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="published_at">Published at</label>
-                    <input type="text" id="published_at" name="published_at" class="form-control" {{isset($post) ? $post->published_at : ""}}>
+                    <input type="text" id="published_at" name="published_at" class="form-control" value="{{isset($post) ? $post->published_at : ''}}">
                 </div>
                 @if(isset($post))
                     <div class="form-group">
