@@ -4,11 +4,12 @@
     <div class="d-flex justify-content-end my-2">
     <a href="{{ route('tags.create')}}" class="btn btn-success float-right">Add Tag</a>
     </div>
-    @if(session()->has('success'))
+    <!-- @if(session()->has('success'))
         <div class="alert alert-success">
             {{session('success')}}
         </div>
-    @endif
+    @endif -->
+    @include('partial.errors')
     <div class="card card-default">
         <div class="card-header">
         Tags
