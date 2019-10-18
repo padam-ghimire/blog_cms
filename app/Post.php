@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Category;
 
+
 class Post extends Model
 {
     //
@@ -21,5 +22,12 @@ class Post extends Model
     }
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function hasTag($tagId){
+        return in_array($tagId,$this->tags->pluck('id')->toArray());
     }
 }

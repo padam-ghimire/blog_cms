@@ -7,22 +7,7 @@
         </div>
 
         <div class="card-body">
-        @if(session()->has('error'))
-        <div class="alert alert-danger">
-            {{session('error')}}
-        </div>
-    @endif
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul class="group-list">
-                    @foreach($errors->all() as $error)
-                    <li class="group-list-item">
-                        {{$error}}
-                    </li>
-                    @endforeach
-                </ul> 
-            </div>
-        @endif
+        @include('partial.errors')
             <form action="{{ isset($category) ? route('categories.update',$category->id) : route('categories.store') }} " method="post">
                 @csrf
                 @if(isset($category))

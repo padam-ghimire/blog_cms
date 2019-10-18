@@ -5,11 +5,8 @@
 <div class="d-flex justify-content-end my-2">
     <a href="{{ route('posts.create')}}" class="btn btn-success float-right">Add Post</a>
 </div>
-@if(session()->has('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
+@include('partial.errors')
+
 <div class="card card-defalut">
     <div class="card-header">Posts</div>
     <div class="card-body">

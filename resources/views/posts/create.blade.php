@@ -4,11 +4,7 @@
 
     <div class="card card-default">
         <div class="card-header">{{isset($post) ? "Edit Post" : "Create Post"}}</div>
-        @if(session()->has('error'))
-        <div class="alert alert-danger">
-            {{session('success')}}
-        </div>
-    @endif
+            @include('partial.errors')
         <div class="card-body">
             <form action="{{ isset($post) ? route('posts.update',$post->id) : route('posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -67,6 +63,29 @@
                    @endforeach
                    </select>
                 </div>
+                @if($tags->count() > 0)
+
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <select name="tags[]" id="tags" class="form-control" multiple>
+                        @foreach($tags as $tag)
+                        <option value="{{$tag->id}}"
+                        @if(isset($post))
+
+                            @if($post->hasTag($tag->id))
+                                selected
+                            @endif
+
+                        @endif
+                        
+                        >{{$tag->name}}</option>
+
+                        @endforeach
+
+                    </select>
+                </div>
+
+                @endif
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
                         {{isset($post) ? "Update Post" : "Add Post"}}
