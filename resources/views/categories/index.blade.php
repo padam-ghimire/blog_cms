@@ -17,7 +17,10 @@
             @if($categories->count() > 0)
             <table class="table">
                 <thead>
-                    Name
+                    
+                    <th>Name</th>
+                <th>Post Count</th>
+
                 </thead>
                 <thead>
                 </thead>
@@ -27,6 +30,7 @@
                             <td>
                                 {{$category->name}}
                             </td>
+                            <td>{{$category->posts->count()}}</td>
                             <td>
                             <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-info btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})">Edit</a>

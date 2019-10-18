@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Posts\CreatePostRequest;
 use App\Http\Requests\Posts\UpdatePostRequest;
 use App\Post;
+use App\Category;
 
 
 
 class PostsController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('VerifyCategoriesCount')->only(['create','store']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        // return (Category::all());
+        return view('posts.create',['categories' => Category::all()]);
     }
 
     /**
@@ -48,7 +54,8 @@ class PostsController extends Controller
             'description'=>$request->description,
             'content'=>$request->content,
             'published_at' => $request->published_at,
-            'image' => $image
+            'image' => $image,
+            'category_id' => $request->category
         ]);
         session()->flash('success','Post Created successfully');
         return redirect(route('posts.index'));
@@ -73,7 +80,8 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post',$post);
+        
+        return view('posts.create')->with('post',$post)->with('categories',Category::all());
     }
 
     /**
@@ -89,8 +97,14 @@ class PostsController extends Controller
             'title',
             'description',
             'published_at',
-            'content'
+            'content',
+
+        
         ]);
+
+        $data['category_id'] = $request->category;
+
+        // return $data;
         if($request->hasFile('image')){
             $image = $request->image->store('posts');
             $post->deleteImage();

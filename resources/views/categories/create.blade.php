@@ -5,7 +5,13 @@
         <div class="card-header">
         {{isset($category) ? "Edit Category" : "Create Catgeory"}}
         </div>
+
         <div class="card-body">
+        @if(session()->has('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+    @endif
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="group-list">
