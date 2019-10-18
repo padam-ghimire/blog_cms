@@ -25,3 +25,10 @@ Route::resource('tags', 'TagsController');
 Route::get('trashed-post', 'PostsController@trashed')->name('trashed-posts.index');
 Route::put('restore-post/{post}','PostsController@restore')->name('restore-post');
 });
+
+Route::middleware(['auth','admin'])->group(function(){
+    
+    Route::get('users','UsersController@index')->name('users.index');
+    Route::put('users/{user}/make-admin','UsersController@makeAdmin')->name('user.make-admin');
+
+});
