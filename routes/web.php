@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','WelcomeController@index')->name('welcome');
+Route::get('blog/posts/{post}','Blog\PostsController@show')->name('blog.show');
+Route::get('blog/categories/{category}','Blog\PostsController@category')->name('blog.cat');
+Route::get('blog/tags/{tag}','Blog\PostsController@tag')->name('blog.ta');
 
-Auth::routes();
-Route::middleware(['auth'])->group(function() {
+Auth::routes(['verify' => true]);
+Route::middleware(['auth','verified'])->group(function() {
     
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('categories', 'CategoriesController');

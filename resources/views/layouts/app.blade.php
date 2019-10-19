@@ -121,5 +121,7 @@
      <!-- Scripts -->
      <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
+
 </body>
 </html>

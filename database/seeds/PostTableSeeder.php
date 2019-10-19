@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Post;
 use App\Tag;
 use App\Category;
+use App\User;
 class PostTableSeeder extends Seeder
 {
     /**
@@ -33,7 +34,21 @@ class PostTableSeeder extends Seeder
         ]);
 
 
-      
+      $author1= User::create([
+          'name' =>"Ram Prasad",
+          'email' =>"ram@prasad",
+          'password' => Hash::make('master123')
+      ]);
+      $author2= User::create([
+        'name' =>"Gham Prasad",
+        'email' =>"gham@prasad.com",
+        'password' => Hash::make('password')
+      ]);
+      $author3= User::create([
+        'name' =>"Shyam Prasad",
+        'email' =>"shyam@prasad.com",
+        'password' => Hash::make('secret')
+      ]);
 
 
 
@@ -42,7 +57,8 @@ class PostTableSeeder extends Seeder
             'description' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             'content' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             'category_id'=>$category1->id,
-            'image' =>'posts/1.jpg'
+            'image' =>'posts/1.jpg',
+            'user_id' =>$author1->id
             
         ]);
 
@@ -51,7 +67,9 @@ class PostTableSeeder extends Seeder
             'description' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             'content' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             'category_id'=>$category2->id,
-            'image' =>'posts/2.jpg'
+            'image' =>'posts/2.jpg',
+            'user_id' =>$author2->id
+
 
         ]);
 
@@ -60,7 +78,9 @@ class PostTableSeeder extends Seeder
             'description' =>"laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
             'content' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             'category_id'=>$category3->id,
-            'image' =>'posts/3.jpg'
+            'image' =>'posts/3.jpg',
+            'user_id' =>$author1->id
+
 
         ]);
 
@@ -69,7 +89,9 @@ class PostTableSeeder extends Seeder
             'description' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             'content' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             'category_id'=>$category4->id,
-            'image' =>'posts/4.jpg'
+            'image' =>'posts/4.jpg',
+            'user_id' =>$author3->id
+
 
         ]);
 
@@ -78,7 +100,9 @@ class PostTableSeeder extends Seeder
             'description' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             'content' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             'category_id'=>$category5->id,
-            'image' =>'posts/5.jpg'
+            'image' =>'posts/5.jpg',
+            'user_id' =>$author1->id
+
 
         ]);
 
@@ -87,7 +111,9 @@ class PostTableSeeder extends Seeder
             'description' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             'content' =>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             'category_id'=>$category6->id,
-            'image' =>'posts/6.jpg'
+            'image' =>'posts/6.jpg',
+            'user_id' =>$author3->id
+
 
         ]);
 

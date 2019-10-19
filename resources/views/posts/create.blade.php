@@ -32,7 +32,7 @@
                 </div>
                 @if(isset($post))
                     <div class="form-group">
-                        <img src="/storage/{{$post->image }}" alt="" style="width:100%;">
+                        <img src="../../storage/{{$post->image }}" alt="" style="width:100%;">
                     </div>
                 @endif
                 <div class="form-group">
@@ -113,12 +113,15 @@ $(document).ready(function() {
     $('.tags-selector').select2();
 })
 </script>
+
+
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.11/dist/css/select2.min.css" rel="stylesheet" />
+    
 @endsection
 
 
